@@ -22,7 +22,7 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-import sys, os, urllib2, base64, logging, argparse
+import sys, os, urllib2, base64, logging, argparse, exceptions
 
 logger = None
 
@@ -31,6 +31,8 @@ class PyUploaderException(Exception):
         self.msg = msg
 
 def upload(url_path, path, username=None, password=None):
+    if not os.path.exists(path):
+        raise exceptions.Exception(path + ' does not exist')
     for (file_path, full_url_path) in build_urls(url_path, path):
         logger.info('%s -> %s' % (file_path, full_url_path))
         request = urllib2.Request(full_url_path, data=open(file_path, 'rb'))
