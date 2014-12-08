@@ -59,7 +59,7 @@ def build_urls(url_path, path):
             path = path[:len(path)-1]
         base_path = os.path.basename(path)
         for (dirpath, dirnames, filenames) in os.walk(path):
-            for filename in filenames:
+            for filename in sorted(filenames):
                 file_path = os.path.join(dirpath, filename)
                 p = file_path[len(path)+1:]
                 full_url_path = url_path + base_path + '/' + p
