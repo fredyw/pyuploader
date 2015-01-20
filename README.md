@@ -5,6 +5,8 @@ A Python script to upload file(s) using HTTP PUT. It supports BASIC authenticati
 
 pyuploader supports uploading a single file or a directory.
 
+This tool is useful for uploading file(s) to systems, such as Artifactory.
+
 Download
 --------
 https://github.com/fredyw/pyuploader/releases
